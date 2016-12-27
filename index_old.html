@@ -1,0 +1,114 @@
+<html>
+<h1>How likely would one survive in the Titanic tragedy?</h1>
+<p> The titanic crash was a well remembered tragedy. Do you ever wonder if you are actually on the boat on that particular day, how likely are you going to survive the accident? The below visualization allows us to look into the historic data and understand the type of passengers who were most likely to survive. </p>
+
+<button id="btn_1">Survival Rate by Sex</button>
+<button id="btn_2">Survival Rate by Class</button>
+<button id="btn_3">Survival Rate by Age</button>
+<button id="btn_4">Survival Rate by Combined Factors</button>
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.8/d3.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dimple/2.2.0/dimple.latest.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.1.0/topojson.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<style type="text/css">
+  h1 {
+    font-family: sans-serif;
+    font-size: 20px;
+  }
+
+  p {
+    width: 650px;
+    font-family: sans-serif;
+    font-size: 12px;
+  }
+</style>
+
+
+<div id="chartContainer">
+  <script type="text/javascript">
+  // Create the default chart
+    var svg = dimple.newSvg("#chartContainer", 650, 375);
+      d3.csv("titanic_data _v1.csv", function (data) {
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(65, 30, 555, 305)
+        var x = myChart.addCategoryAxis("x", "Sex");
+        x.addOrderRule("Sex");
+        myChart.addPctAxis("y", "PassengerId");
+        myChart.addSeries("Survived", dimple.plot.bar);
+        myChart.addLegend(100, 10, 530, 20, "right");
+        myChart.draw(1000);
+      });
+    
+  </script>
+
+  <script type="text/javascript">
+  // Upon clicking the button, chart of Class perspective will be created
+
+    d3.select("#btn_1").on("click", function() {
+      d3.select("svg").remove();
+      var svg = dimple.newSvg("#chartContainer", 650, 375);
+      d3.csv("titanic_data _v1.csv", function (data) {
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(65, 30, 555, 305)
+        var x = myChart.addCategoryAxis("x", "Sex");
+        x.addOrderRule("Sex");
+        myChart.addPctAxis("y", "PassengerId");
+        myChart.addSeries("Survived", dimple.plot.bar);
+        myChart.addLegend(100, 10, 530, 20, "right");
+        myChart.draw(1000);
+      });
+    });
+
+    d3.select("#btn_2").on("click", function() {
+      d3.select("svg").remove();
+      var svg = dimple.newSvg("#chartContainer", 650, 375);
+      d3.csv("titanic_data _v1.csv", function (data) {
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(65, 30, 555, 305)
+        var x = myChart.addCategoryAxis("x", "Pclass");
+        x.addOrderRule("Pclass");
+        myChart.addPctAxis("y", "PassengerId");
+        myChart.addSeries("Survived", dimple.plot.bar);
+        myChart.addLegend(100, 10, 530, 20, "right");
+        myChart.draw(1000);
+      });
+    });
+
+    d3.select("#btn_3").on("click", function() {
+      d3.select("svg").remove();
+      var svg = dimple.newSvg("#chartContainer", 650, 375);
+      d3.csv("titanic_data _v1.csv", function (data) {
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(65, 30, 555, 305)
+        var x = myChart.addCategoryAxis("x", "Age Group");
+        x.addOrderRule(['Children', 'Adult', 'Youth', 'Senior', 'N/A']);
+        myChart.addPctAxis("y", "PassengerId");
+        myChart.addSeries("Survived", dimple.plot.bar);
+        myChart.addLegend(100, 10, 530, 20, "right");
+        myChart.draw(1000);
+      });
+    });
+
+    d3.select("#btn_4").on("click", function() {
+      d3.select("svg").remove();
+      var svg = dimple.newSvg("#chartContainer", 650, 400);
+      d3.csv("titanic_data _v1.csv", function (data) {
+        var myChart = new dimple.chart(svg, data);
+        myChart.setBounds(65, 30, 555, 245)
+        var x = myChart.addCategoryAxis("x", "Combined");
+        x.addOrderRule(['Children, female, Class 2', 'Children, male, Class 1', 'Children, male, Class 2', 'N/A, female, Class 1', 'N/A, female, Class 2', 'Youth, female, Class 1', 'Adult, female, Class 1', 'Youth, female, Class 2', 'Adult, female, Class 2', 'Children, female, Class 1', 'N/A, female, Class 3', 'Children, female, Class 3', 'Youth, female, Class 3', 'Adult, male, Class 1', 'Adult, female, Class 3', 'Children, male, Class 3', 'N/A, male, Class 1', 'N/A, male, Class 2', 'Youth, male, Class 1', 'Senior, male, Class 1', 'Adult, male, Class 3', 'Youth, male, Class 3', 'N/A, male, Class 3', 'Adult, male, Class 2', 'Youth, male, Class 2', 'Senior, male, Class 2', 'Senior, male, Class 3']);
+        myChart.addPctAxis("y", "PassengerId");
+        myChart.addSeries("Survived", dimple.plot.bar);
+        myChart.addLegend(100, 10, 530, 20, "right");
+        myChart.draw(1000);
+      });
+    });
+  </script>
+</div>
+
+
+
+</html> 
