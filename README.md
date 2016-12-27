@@ -11,6 +11,7 @@ Design - explain any design choices you made including changes to the visualizat
 Feedback - include all feedback you received from others on your visualization from the first sketch to the final visualization
 
 Feedback (1) <br>
+
 1. What do you notice in the visualization? <br>
 There are two colors to determine the survival rate of different categories of passengers<br>
 
@@ -29,6 +30,7 @@ You can understand their thoughts when they were facing the death. Senior people
 So, which of the factor is more influencing? And i would like to see the combined factors by group. <br>So that, we can draw a conclusion on the above question<br>
 
 Feedback (2) <br>
+
 1. What do you notice in the visualization? <br>
 You can understand the titanic passenger from multiple perspectives<br>
 
